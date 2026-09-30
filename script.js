@@ -21,7 +21,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      const offset = 72; // header height
+      const offset = 88; // header height
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -42,3 +42,17 @@ function handleSubmit(event) {
   setTimeout(() => { successMsg.hidden = true; }, 5000);
   return false;
 }
+
+// ===== Rental agreement form handler =====
+document.addEventListener('DOMContentLoaded', () => {
+  const raForm = document.getElementById('rental-agreement-form');
+  if (raForm) {
+    raForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const successMsg = document.getElementById('ra-form-success');
+      successMsg.hidden = false;
+      raForm.reset();
+      setTimeout(() => { successMsg.hidden = true; }, 6000);
+    });
+  }
+});
