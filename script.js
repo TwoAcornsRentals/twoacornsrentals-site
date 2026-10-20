@@ -32,6 +32,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const targetId = this.getAttribute('href');
     if (!targetId || targetId === '#') return;
 
+    // Handle scroll to top specifically for logo and top links
+    if (targetId === '#top') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const target = document.querySelector(targetId);
     if (target) {
       e.preventDefault();
