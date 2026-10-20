@@ -43,6 +43,7 @@ ul { list-style: none; }
   cursor: pointer;
   transition: var(--transition);
   font-family: inherit;
+  text-align: center;
 }
 .btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(44,76,56,0.3); }
 .btn-small { padding: 10px 24px; }
@@ -165,6 +166,8 @@ ul { list-style: none; }
 .contact-info p { color: var(--gray); margin-bottom: 24px; }
 .contact-details { display: grid; gap: 12px; margin-bottom: 24px; }
 .contact-details p { margin: 0; font-size: 1rem; }
+.contact-link { color: var(--primary); font-weight: 600; transition: var(--transition); }
+.contact-link:hover { text-decoration: underline; color: var(--primary-dark); }
 .social-links { display: flex; gap: 20px; }
 .social-links a { color: var(--accent); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
 .social-links a:hover { color: var(--accent-dark); }
@@ -255,9 +258,15 @@ ul { list-style: none; }
     padding: 16px 24px; gap: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
     transition: var(--transition);
   }
-  .main-nav.open { transform: translateY(0); }
+  .main-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
   .main-nav a { padding: 12px 0; border-bottom: 1px solid #eee; }
   .main-nav .btn { border-bottom: none; text-align: center; margin-top: 8px; }
 
@@ -274,6 +283,9 @@ ul { list-style: none; }
   .ra-field-row { grid-template-columns: 1fr; }
   .ra-items-grid { grid-template-columns: 1fr; }
   .rental-agreement-form { padding: 24px; }
+  
+  /* Prevent iOS auto-zoom on inputs */
+  .form-group input, .form-group textarea { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
