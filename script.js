@@ -1,3 +1,14 @@
+// Helper function to format YYYY-MM-DD to American standard MM/DD/YYYY
+function formatAmericanDate(dateString) {
+  if (!dateString) return 'Unspecified';
+  const parts = dateString.split('-');
+  if (parts.length === 3) {
+    const [year, month, day] = parts;
+    return `${month}/${day}/${year}`;
+  }
+  return dateString;
+}
+
 // ===== Mobile Nav Toggle =====
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
@@ -58,11 +69,12 @@ function handleSubmit(event) {
   const name = document.getElementById('name')?.value || 'Valued Customer';
   const email = document.getElementById('email')?.value || '';
   const phone = document.getElementById('phone')?.value || 'N/A';
-  const date = document.getElementById('date')?.value || 'Unspecified';
+  const rawDate = document.getElementById('date')?.value || '';
+  const date = formatAmericanDate(rawDate);
   const items = document.getElementById('items')?.value || 'General inquiry';
   const message = document.getElementById('message')?.value || '';
 
-  // 1. Format mailto link
+  // 1. Format mailto link with American date format (MM/DD/YYYY)
   const subject = encodeURIComponent(`New Quote Request - ${name}`);
   const body = encodeURIComponent(
     `Quote Request Details:\n\n` +
@@ -116,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('ra-name')?.value || 'Renter';
       const phone = document.getElementById('ra-phone')?.value || '';
       const address = document.getElementById('ra-address')?.value || '';
-      const date = document.getElementById('ra-date')?.value || '';
+      const rawDate = document.getElementById('ra-date')?.value || '';
+      const date = formatAmericanDate(rawDate);
       const time = document.getElementById('ra-time')?.value || '';
       const chairs = document.getElementById('ra-chairs')?.value || '0';
       const tables = document.getElementById('ra-tables')?.value || '0';
