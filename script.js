@@ -35,7 +35,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(targetId);
     if (target) {
       e.preventDefault();
-      const offset = 80; // adjusted header height for mobile views
+      const offset = 80;
       const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
@@ -48,19 +48,14 @@ function handleSubmit(event) {
   const form = event.target;
   const successMsg = document.getElementById('form-success');
 
-  const name = document.getElementById('name')?.value || '';
+  const name = document.getElementById('name')?.value || 'Valued Customer';
   const email = document.getElementById('email')?.value || '';
-  const phone = document.getElementById('phone')?.value || '';
-  const date = document.getElementById('date')?.value || '';
-  const items = document.getElementById('items')?.value || '';
+  const phone = document.getElementById('phone')?.value || 'N/A';
+  const date = document.getElementById('date')?.value || 'Unspecified';
+  const items = document.getElementById('items')?.value || 'General inquiry';
   const message = document.getElementById('message')?.value || '';
 
-  // Show inline success message
-  if (successMsg) {
-    successMsg.hidden = false;
-  }
-
-  // Construct mailto link so request sends to business inbox
+  // 1. Format mailto link for clients with email apps
   const subject = encodeURIComponent(`New Quote Request - ${name}`);
   const body = encodeURIComponent(
     `Quote Request Details:\n\n` +
@@ -71,8 +66,33 @@ function handleSubmit(event) {
     `Items Needed: ${items}\n` +
     `Message: ${message}\n`
   );
+  const mailtoUrl = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
 
-  window.location.href = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
+  // 2. Show unambiguous on-screen confirmation message (desktop & mobile)
+  if (successMsg) {
+    successMsg.hidden = false;
+    successMsg.style.display = 'block';
+    successMsg.style.padding = '15px';
+    successMsg.style.marginTop = '15px';
+    successMsg.style.backgroundColor = '#e6f4ea';
+    successMsg.style.border = '1px solid #34a853';
+    successMsg.style.borderRadius = '8px';
+    successMsg.style.color = '#137333';
+    successMsg.innerHTML = `
+      <strong>✅ Request Submitted Successfully!</strong><br>
+      Thank you, <strong>${name}</strong>. We have received your request and will reach out within 24 hours at <strong>${email}</strong>.<br><br>
+      <small>Need immediate assistance? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft in email app</a> or call us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+    `;
+  }
+
+  // 3. Attempt mailto redirect without breaking if laptop has no email client
+  try {
+    const link = document.createElement('a');
+    link.href = mailtoUrl;
+    link.click();
+  } catch (err) {
+    console.log('Mailto client not configured locally:', err);
+  }
 
   form.reset();
   return false;
@@ -86,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const successMsg = document.getElementById('ra-form-success');
 
-      const name = document.getElementById('ra-name')?.value || '';
+      const name = document.getElementById('ra-name')?.value || 'Renter';
       const phone = document.getElementById('ra-phone')?.value || '';
       const address = document.getElementById('ra-address')?.value || '';
       const date = document.getElementById('ra-date')?.value || '';
@@ -98,11 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = document.getElementById('ra-total')?.value || '0.00';
       const sig = document.getElementById('ra-renter-sig')?.value || '';
 
-      if (successMsg) {
-        successMsg.hidden = false;
-      }
-
-      // Construct mailto link for rental agreement
       const subject = encodeURIComponent(`Submitted Rental Agreement - ${name}`);
       const body = encodeURIComponent(
         `Rental Agreement Submission:\n\n` +
@@ -119,8 +134,31 @@ document.addEventListener('DOMContentLoaded', () => {
         `Total Amount Due: $${total}\n\n` +
         `Renter Signature: ${sig}\n`
       );
+      const mailtoUrl = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
 
-      window.location.href = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
+      if (successMsg) {
+        successMsg.hidden = false;
+        successMsg.style.display = 'block';
+        successMsg.style.padding = '15px';
+        successMsg.style.marginTop = '15px';
+        successMsg.style.backgroundColor = '#e6f4ea';
+        successMsg.style.border = '1px solid #34a853';
+        successMsg.style.borderRadius = '8px';
+        successMsg.style.color = '#137333';
+        successMsg.innerHTML = `
+          <strong>✅ Rental Agreement Submitted!</strong><br>
+          Thank you, <strong>${name}</strong>. Your rental agreement has been submitted! We will contact you shortly to confirm.<br><br>
+          <small><a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to send details via email app</a> or call/text <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+        `;
+      }
+
+      try {
+        const link = document.createElement('a');
+        link.href = mailtoUrl;
+        link.click();
+      } catch (err) {
+        console.log('Mailto client not configured locally:', err);
+      }
 
       raForm.reset();
     });
