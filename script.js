@@ -62,7 +62,7 @@ function handleSubmit(event) {
   const items = document.getElementById('items')?.value || 'General inquiry';
   const message = document.getElementById('message')?.value || '';
 
-  // 1. Format mailto link for clients with email apps
+  // 1. Format mailto link
   const subject = encodeURIComponent(`New Quote Request - ${name}`);
   const body = encodeURIComponent(
     `Quote Request Details:\n\n` +
@@ -75,7 +75,7 @@ function handleSubmit(event) {
   );
   const mailtoUrl = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
 
-  // 2. Show unambiguous on-screen confirmation message (desktop & mobile)
+  // 2. Show clear, accurate confirmation message on-screen
   if (successMsg) {
     successMsg.hidden = false;
     successMsg.style.display = 'block';
@@ -86,13 +86,13 @@ function handleSubmit(event) {
     successMsg.style.borderRadius = '8px';
     successMsg.style.color = '#137333';
     successMsg.innerHTML = `
-      <strong>✅ Request Submitted Successfully!</strong><br>
-      Thank you, <strong>${name}</strong>. We have received your request and will reach out within 24 hours at <strong>${email}</strong>.<br><br>
-      <small>Need immediate assistance? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft in email app</a> or call us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+      <strong>✅ Email Drafted & Ready to Send!</strong><br>
+      Thank you, <strong>${name}</strong>. Your request details have been pre-filled in your email app. Please hit <strong>Send</strong> in your email window to deliver it to <strong>oaktree@twoacornsrentals.com</strong>.<br><br>
+      <small>Email app didn't open? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft manually</a> or call/text us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
     `;
   }
 
-  // 3. Attempt mailto redirect without breaking if laptop has no email client
+  // 3. Trigger email app popup safely
   try {
     const link = document.createElement('a');
     link.href = mailtoUrl;
@@ -153,9 +153,9 @@ document.addEventListener('DOMContentLoaded', () => {
         successMsg.style.borderRadius = '8px';
         successMsg.style.color = '#137333';
         successMsg.innerHTML = `
-          <strong>✅ Rental Agreement Submitted!</strong><br>
-          Thank you, <strong>${name}</strong>. Your rental agreement has been submitted! We will contact you shortly to confirm.<br><br>
-          <small><a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to send details via email app</a> or call/text <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+          <strong>✅ Rental Agreement Drafted!</strong><br>
+          Thank you, <strong>${name}</strong>. Your agreement details have been pre-filled in your email app. Please hit <strong>Send</strong> in your email window to complete your submission.<br><br>
+          <small>Email app didn't open? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft manually</a> or call/text us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
         `;
       }
 
