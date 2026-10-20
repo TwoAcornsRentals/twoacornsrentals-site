@@ -43,7 +43,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const targetId = this.getAttribute('href');
     if (!targetId || targetId === '#') return;
 
-    // Handle scroll to top specifically for logo and top links
     if (targetId === '#top') {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -74,7 +73,6 @@ function handleSubmit(event) {
   const items = document.getElementById('items')?.value || 'General inquiry';
   const message = document.getElementById('message')?.value || '';
 
-  // 1. Format mailto link with American date format (MM/DD/YYYY)
   const subject = encodeURIComponent(`New Quote Request - ${name}`);
   const body = encodeURIComponent(
     `Quote Request Details:\n\n` +
@@ -87,30 +85,31 @@ function handleSubmit(event) {
   );
   const mailtoUrl = `mailto:oaktree@twoacornsrentals.com?subject=${subject}&body=${body}`;
 
-  // 2. Show clear, accurate confirmation message on-screen
   if (successMsg) {
     successMsg.hidden = false;
     successMsg.style.display = 'block';
-    successMsg.style.padding = '15px';
-    successMsg.style.marginTop = '15px';
+    successMsg.style.padding = '18px';
+    successMsg.style.marginTop = '16px';
     successMsg.style.backgroundColor = '#e6f4ea';
-    successMsg.style.border = '1px solid #34a853';
-    successMsg.style.borderRadius = '8px';
+    successMsg.style.border = '2px solid #34a853';
+    successMsg.style.borderRadius = '10px';
     successMsg.style.color = '#137333';
+    successMsg.style.textAlign = 'center';
     successMsg.innerHTML = `
-      <strong>✅ Email Drafted & Ready to Send!</strong><br>
-      Thank you, <strong>${name}</strong>. Your request details have been pre-filled in your email app. Please hit <strong>Send</strong> in your email window to deliver it to <strong>oaktree@twoacornsrentals.com</strong>.<br><br>
-      <small>Email app didn't open? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft manually</a> or call/text us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+      <strong style="font-size: 1.1rem;">✅ Quote Request Prepared!</strong><br>
+      <span style="display:inline-block; margin-top:6px; margin-bottom:12px;">Thank you, <strong>${name}</strong>. Tap the button below to open your email draft and hit send:</span><br>
+      <a href="${mailtoUrl}" class="btn" style="background:#2C4C38; color:#fff; padding:12px 24px; border-radius:30px; font-weight:700; display:inline-block; text-decoration:none; margin-bottom:10px;">📩 Open Draft in Email App</a><br>
+      <small style="color:#555;">Or call/text us directly at <a href="tel:+19107074312" style="color:#137333; text-decoration:underline;">(910) 707-4312</a>.</small>
     `;
   }
 
-  // 3. Trigger email app popup safely
+  // Attempt auto-open for desktop clients while keeping on-screen button ready
   try {
     const link = document.createElement('a');
     link.href = mailtoUrl;
     link.click();
   } catch (err) {
-    console.log('Mailto client not configured locally:', err);
+    console.log('Mailto handler requires direct tap on mobile:', err);
   }
 
   form.reset();
@@ -159,16 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successMsg) {
         successMsg.hidden = false;
         successMsg.style.display = 'block';
-        successMsg.style.padding = '15px';
-        successMsg.style.marginTop = '15px';
+        successMsg.style.padding = '18px';
+        successMsg.style.marginTop = '16px';
         successMsg.style.backgroundColor = '#e6f4ea';
-        successMsg.style.border = '1px solid #34a853';
-        successMsg.style.borderRadius = '8px';
+        successMsg.style.border = '2px solid #34a853';
+        successMsg.style.borderRadius = '10px';
         successMsg.style.color = '#137333';
+        successMsg.style.textAlign = 'center';
         successMsg.innerHTML = `
-          <strong>✅ Rental Agreement Drafted!</strong><br>
-          Thank you, <strong>${name}</strong>. Your agreement details have been pre-filled in your email app. Please hit <strong>Send</strong> in your email window to complete your submission.<br><br>
-          <small>Email app didn't open? <a href="${mailtoUrl}" style="color: #137333; text-decoration: underline;">Click here to open draft manually</a> or call/text us at <a href="tel:+19107074312" style="color: #137333; text-decoration: underline;">(910) 707-4312</a>.</small>
+          <strong style="font-size: 1.1rem;">✅ Rental Agreement Prepared!</strong><br>
+          <span style="display:inline-block; margin-top:6px; margin-bottom:12px;">Thank you, <strong>${name}</strong>. Tap the button below to complete your submission in your email app:</span><br>
+          <a href="${mailtoUrl}" class="btn" style="background:#2C4C38; color:#fff; padding:12px 24px; border-radius:30px; font-weight:700; display:inline-block; text-decoration:none; margin-bottom:10px;">📩 Open Agreement in Email App</a><br>
+          <small style="color:#555;">Or call/text us directly at <a href="tel:+19107074312" style="color:#137333; text-decoration:underline;">(910) 707-4312</a>.</small>
         `;
       }
 
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.href = mailtoUrl;
         link.click();
       } catch (err) {
-        console.log('Mailto client not configured locally:', err);
+        console.log('Mailto handler requires direct tap on mobile:', err);
       }
 
       raForm.reset();
