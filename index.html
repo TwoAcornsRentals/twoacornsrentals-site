@@ -133,37 +133,36 @@
           <a href="#" aria-label="Google">Google Reviews</a>
         </div>
       </div>
-      <form class="contact-form" onsubmit="return handleSubmit(event)">
+      <form class="contact-form" action="mailto:oaktree@twoacornsrentals.com" method="POST" enctype="text/plain">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="Name" required />
           </div>
           <div class="form-group">
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="Email" required />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" />
+            <input type="tel" id="phone" name="Phone" />
           </div>
           <div class="form-group">
             <label for="date">Event Date</label>
-            <input type="date" id="date" name="date" />
+            <input type="date" id="date" name="Event Date" />
           </div>
         </div>
         <div class="form-group">
           <label for="items">What do you need?</label>
-          <input type="text" id="items" name="items" placeholder="e.g. bounce house, 6 tables, 40 chairs" />
+          <input type="text" id="items" name="Items Needed" placeholder="e.g. bounce house, 6 tables, 40 chairs" />
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell us about your event..."></textarea>
+          <textarea id="message" name="Message" rows="4" placeholder="Tell us about your event..."></textarea>
         </div>
         <button type="submit" class="btn btn-full">Send Request</button>
-        <p class="form-success" id="form-success" hidden>✅ Thanks! We'll get back to you within 24 hours.</p>
       </form>
     </div>
   </section>
@@ -173,7 +172,7 @@
     <div class="container">
       <h2 class="section-title">Equipment Rental Agreement</h2>
       <p class="section-subtitle">Complete this form to finalize your rental. Payment is due prior to or at time of delivery/pickup via Cash or Venmo.</p>
-      <form class="rental-agreement-form" id="rental-agreement-form">
+      <form class="rental-agreement-form" id="rental-agreement-form" action="mailto:oaktree@twoacornsrentals.com" method="POST" enctype="text/plain">
 
         <!-- Section 1: Rental Details -->
         <div class="ra-section">
@@ -181,25 +180,25 @@
           <div class="ra-field-row">
             <div class="form-group">
               <label for="ra-name">Renter Name *</label>
-              <input type="text" id="ra-name" name="ra-name" required />
+              <input type="text" id="ra-name" name="Renter Name" required />
             </div>
             <div class="form-group">
               <label for="ra-phone">Phone Number *</label>
-              <input type="tel" id="ra-phone" name="ra-phone" required />
+              <input type="tel" id="ra-phone" name="Phone Number" required />
             </div>
           </div>
           <div class="form-group">
             <label for="ra-address">Delivery / Event Address *</label>
-            <input type="text" id="ra-address" name="ra-address" required />
+            <input type="text" id="ra-address" name="Delivery Address" required />
           </div>
           <div class="ra-field-row">
             <div class="form-group">
               <label for="ra-date">Rental Date(s) *</label>
-              <input type="date" id="ra-date" name="ra-date" required />
+              <input type="date" id="ra-date" name="Rental Date" required />
             </div>
             <div class="form-group">
               <label for="ra-time">Drop-Off / Pickup Time *</label>
-              <input type="text" id="ra-time" name="ra-time" placeholder="e.g. 10:00 AM – 6:00 PM" required />
+              <input type="text" id="ra-time" name="Drop-Off Time" placeholder="e.g. 10:00 AM – 6:00 PM" required />
             </div>
           </div>
         </div>
@@ -210,24 +209,24 @@
           <div class="ra-items-grid">
             <div class="form-group">
               <label for="ra-chairs">Chairs (qty)</label>
-              <input type="number" id="ra-chairs" name="ra-chairs" min="0" value="0" />
+              <input type="number" id="ra-chairs" name="Chairs Qty" min="0" value="0" />
             </div>
             <div class="form-group">
               <label for="ra-tables">Tables (qty)</label>
-              <input type="number" id="ra-tables" name="ra-tables" min="0" value="0" />
+              <input type="number" id="ra-tables" name="Tables Qty" min="0" value="0" />
             </div>
             <div class="form-group">
               <label for="ra-other">Other</label>
-              <input type="text" id="ra-other" name="ra-other" placeholder="e.g. bounce house, canopy, shaved ice machine" />
+              <input type="text" id="ra-other" name="Other Items" placeholder="e.g. bounce house, canopy, shaved ice machine" />
             </div>
             <div class="form-group">
               <label for="ra-delivery">Delivery</label>
-              <input type="text" id="ra-delivery" name="ra-delivery" placeholder="e.g. standard delivery" />
+              <input type="text" id="ra-delivery" name="Delivery Type" placeholder="e.g. standard delivery" />
             </div>
           </div>
           <div class="form-group ra-total-row">
             <label for="ra-total">Total Amount Due ($)</label>
-            <input type="number" id="ra-total" name="ra-total" min="0" step="0.01" placeholder="0.00" />
+            <input type="number" id="ra-total" name="Total Amount Due" min="0" step="0.01" placeholder="0.00" />
           </div>
           <p class="ra-payment-note">Payment due prior to or at time of delivery/pickup via <strong>Cash</strong> or <strong>Venmo</strong>.</p>
         </div>
@@ -271,27 +270,26 @@
           <div class="ra-field-row">
             <div class="form-group">
               <label for="ra-renter-sig">Renter Signature (type full name) *</label>
-              <input type="text" id="ra-renter-sig" name="ra-renter-sig" required />
+              <input type="text" id="ra-renter-sig" name="Renter Signature" required />
             </div>
             <div class="form-group">
               <label for="ra-renter-date">Date *</label>
-              <input type="date" id="ra-renter-date" name="ra-renter-date" required />
+              <input type="date" id="ra-renter-date" name="Renter Signature Date" required />
             </div>
           </div>
           <div class="ra-field-row">
             <div class="form-group">
               <label for="ra-owner-sig">Owner Signature (type full name)</label>
-              <input type="text" id="ra-owner-sig" name="ra-owner-sig" />
+              <input type="text" id="ra-owner-sig" name="Owner Signature" />
             </div>
             <div class="form-group">
               <label for="ra-owner-date">Date</label>
-              <input type="date" id="ra-owner-date" name="ra-owner-date" />
+              <input type="date" id="ra-owner-date" name="Owner Signature Date" />
             </div>
           </div>
         </div>
 
         <button type="submit" class="btn btn-full btn-book">Submit Rental Agreement</button>
-        <p class="form-success" id="ra-form-success" hidden>✅ Your rental agreement has been submitted! We'll contact you shortly to confirm.</p>
       </form>
     </div>
   </section>
