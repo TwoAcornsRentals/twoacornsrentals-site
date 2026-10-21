@@ -74,7 +74,7 @@
   <section id="contact" class="section bg-light">
     <div class="container">
       <h2>Request a Quote</h2>
-      <form id="contact-form">
+      <form id="contact-form" onsubmit="return false;">
         <input type="hidden" name="form_type" value="Quote Request">
         
         <!-- Honeypot anti-spam field -->
@@ -110,7 +110,7 @@
           <textarea id="Message" name="Message" rows="4"></textarea>
         </div>
 
-        <button type="submit" id="quote-submit-btn" class="btn btn-primary">Send Request</button>
+        <button type="button" id="quote-submit-btn" class="btn btn-primary">Send Request</button>
         <p id="quote-form-success" class="success-msg" hidden>✅ Quote Request Sent! We will contact you soon.</p>
       </form>
     </div>
@@ -120,7 +120,7 @@
   <section id="rental-agreement" class="section">
     <div class="container">
       <h2>Rental Agreement</h2>
-      <form id="rental-agreement-form">
+      <form id="rental-agreement-form" onsubmit="return false;">
         <input type="hidden" name="form_type" value="Rental Agreement">
 
         <div class="form-group">
@@ -184,7 +184,7 @@
           <input type="date" id="Renter Signature Date" name="Renter Signature Date" required>
         </div>
 
-        <button type="submit" id="ra-submit-btn" class="btn btn-primary">Submit Rental Agreement</button>
+        <button type="button" id="ra-submit-btn" class="btn btn-primary">Submit Rental Agreement</button>
         <p id="ra-form-success" class="success-msg" hidden>✅ Signed Rental Agreement Submitted Successfully!</p>
       </form>
     </div>
