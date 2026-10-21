@@ -1,25 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Two Acorns Rentals — Party & Event Rentals</title>
-  <meta name="description" content="Two Acorns Rentals — bounce house, canopy, tables, chairs, and shaved ice machine rentals for your next event. Serving the local community with reliable, affordable rentals." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two Acorns Rentals</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
-  <!-- ===== Header / Nav ===== -->
-  <header class="site-header" id="top">
-    <div class="container nav-bar">
-      <a href="#top" class="logo">
-        <img src="logo.jfif" alt="Two Acorns Rentals logo" class="logo-img" />
-        <span class="logo-text">Two Acorns Rentals</span>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="#top" class="brand-logo">
+        <img src="logo.jfif" alt="Two Acorns Rentals logo" class="logo-img">
+        <span class="brand-name">Two Acorns Rentals</span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav">
@@ -27,269 +23,169 @@
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <a href="#rental-agreement" class="btn btn-small btn-book">Book Now</a>
+        <a href="#rental-agreement">Rental Agreement</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
+  <!-- ===== Hero Section ===== -->
   <section class="hero">
     <div class="container hero-content">
-      <h1>Make Your Next Event Unforgettable</h1>
-      <p>Bounce houses, tables, chairs, and more for birthdays, backyard parties, and community events.</p>
-      <div class="hero-cta">
-        <a href="#rentals" class="btn">Browse Rentals</a>
-        <a href="#contact" class="btn btn-outline">Request a Quote</a>
-      </div>
-      <div class="hero-badges">
-        <span>✓ Clean & Sanitized</span>
-        <span>✓ Locally Owned</span>
-      </div>
+      <h1>Party & Event Rentals</h1>
+      <p>Making your local gatherings unforgettable with quality chairs, tables, and event essentials.</p>
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
     </div>
   </section>
 
-  <!-- ===== Rentals ===== -->
-  <section class="section" id="rentals">
+  <!-- ===== Rentals Section ===== -->
+  <section id="rentals" class="section">
     <div class="container">
-      <h2 class="section-title">What We Rent</h2>
-      <p class="section-subtitle">Everything you need for a great party — delivered and set up for you.</p>
-      <div class="rental-grid">
-
+      <h2>Our Inventory</h2>
+      <div class="rentals-grid">
         <div class="rental-card">
-          <div class="rental-icon">🏰</div>
-          <h3>Bounce House</h3>
-          <p>A clean, well-maintained bounce house that's perfect for kids' birthdays and backyard parties.</p>
+          <h3>Chairs</h3>
+          <p>Sturdy, comfortable folding chairs for any indoor or outdoor event.</p>
         </div>
-
         <div class="rental-card">
-          <div class="rental-icon">⛺</div>
-          <h3>Canopy</h3>
-          <p>Our Carolina Panthers branded canopy provides shade and shelter for your guests.</p>
+          <h3>Tables</h3>
+          <p>Reliable tables for seating, food displays, and activities.</p>
         </div>
-
-        <div class="rental-card">
-          <div class="rental-icon">🪑</div>
-          <h3>Tables & Chairs</h3>
-          <p>Six-foot rectangular tables and chairs to seat your guests. Great for parties, cookouts, and gatherings.</p>
-        </div>
-
-        <div class="rental-card">
-          <div class="rental-icon">🧊</div>
-          <h3>Shaved Ice Machine</h3>
-          <p>A compact shaved ice machine — a refreshing treat that's always a hit at summer events.</p>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== About ===== -->
-  <section class="section section-alt" id="about">
-    <div class="container about-grid">
-      <div class="about-text">
-        <h2 class="section-title">Locally Owned & Trusted</h2>
-        <p>Two Acorns Rentals is a family-run business serving our community with reliable, affordable party rentals. We take pride in clean, well-maintained equipment and friendly, on-time delivery. We're growing our inventory — check back often for new additions!</p>
-        <ul class="about-features">
-          <li><strong>📅</strong> Easy online booking and quick quotes</li>
-          <li><strong>🚚</strong> Delivery and setup available</li>
-          <li><strong>🧼</strong> All equipment sanitized between rentals</li>
-          <li><strong>🛡️</strong> Fully insured for your peace of mind</li>
-        </ul>
-        <a href="#contact" class="btn">Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Gallery ===== -->
-  <section class="section" id="gallery">
+  <!-- ===== About Section ===== -->
+  <section id="about" class="section bg-light">
     <div class="container">
-      <h2 class="section-title">Recent Events</h2>
-      <p class="section-subtitle">A look at some of the setups we've delivered.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item gal-1"><span>Birthday Bash</span></div>
-        <div class="gallery-item gal-2"><span>Backyard Party</span></div>
-        <div class="gallery-item gal-3"><span>Community Event</span></div>
-        <div class="gallery-item gal-4"><span>Cookout</span></div>
-        <div class="gallery-item gal-5"><span>Kids' Party</span></div>
-        <div class="gallery-item gal-6"><span>Summer Gathering</span></div>
-      </div>
+      <h2>About Two Acorns Rentals</h2>
+      <p>We are a local family-owned rental provider dedicated to making your events seamless, beautiful, and stress-free.</p>
     </div>
   </section>
 
-  <!-- ===== Contact ===== -->
-  <section class="section section-alt" id="contact">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <h2 class="section-title">Book Your Event</h2>
-        <p>Tell us about your event and we'll send a quote within 24 hours. You can also call or text us directly.</p>
-        <div class="contact-details">
-          <p><strong>📞</strong> <a href="tel:+19107074312" class="contact-link">(910) 707-4312</a></p>
-          <p><strong>✉️</strong> <a href="mailto:oaktree@twoacornsrentals.com" class="contact-link">oaktree@twoacornsrentals.com</a></p>
-          <p><strong>🕐</strong> Mon–Sat: 9am – 6pm</p>
-        </div>
-        <div class="social-links">
-          <a href="#" aria-label="Facebook">Facebook</a>
-          <a href="#" aria-label="Instagram">Instagram</a>
-          <a href="#" aria-label="Google">Google Reviews</a>
-        </div>
-      </div>
-      <form class="contact-form" action="mailto:oaktree@twoacornsrentals.com" method="POST" enctype="text/plain">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="Name" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="Email" required />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="Phone" />
-          </div>
-          <div class="form-group">
-            <label for="date">Event Date</label>
-            <input type="date" id="date" name="Event Date" />
-          </div>
-        </div>
+  <!-- ===== Gallery Section ===== -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <h2>Gallery</h2>
+      <p>Check out some of our past setups and happy community events.</p>
+    </div>
+  </section>
+
+  <!-- ===== Contact / Quote Form Section ===== -->
+  <section id="contact" class="section bg-light">
+    <div class="container">
+      <h2>Request a Quote</h2>
+      <form id="contact-form">
+        <input type="hidden" name="form_type" value="Quote Request">
+        
+        <!-- Honeypot anti-spam field -->
+        <input type="text" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off">
+
         <div class="form-group">
-          <label for="items">What do you need?</label>
-          <input type="text" id="items" name="Items Needed" placeholder="e.g. bounce house, 6 tables, 40 chairs" />
+          <label for="Name">Your Name *</label>
+          <input type="text" id="Name" name="Name" required>
         </div>
+
         <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="Message" rows="4" placeholder="Tell us about your event..."></textarea>
+          <label for="Email">Email Address</label>
+          <input type="email" id="Email" name="Email">
         </div>
-        <button type="submit" class="btn btn-full">Send Request</button>
+
+        <div class="form-group">
+          <label for="Phone">Phone Number</label>
+          <input type="tel" id="Phone" name="Phone">
+        </div>
+
+        <div class="form-group">
+          <label for="Event Date">Event Date</label>
+          <input type="date" id="Event Date" name="Event Date">
+        </div>
+
+        <div class="form-group">
+          <label for="Items Needed">Items Needed</label>
+          <input type="text" id="Items Needed" name="Items Needed" placeholder="e.g., 50 chairs, 5 tables">
+        </div>
+
+        <div class="form-group">
+          <label for="Message">Message / Event Location</label>
+          <textarea id="Message" name="Message" rows="4"></textarea>
+        </div>
+
+        <button type="submit" id="quote-submit-btn" class="btn btn-primary">Send Request</button>
+        <p id="quote-form-success" class="success-msg" hidden>✅ Quote Request Sent! We will contact you soon.</p>
       </form>
     </div>
   </section>
 
-  <!-- ===== Rental Agreement ===== -->
-  <section class="section" id="rental-agreement">
+  <!-- ===== Rental Agreement Section ===== -->
+  <section id="rental-agreement" class="section">
     <div class="container">
-      <h2 class="section-title">Equipment Rental Agreement</h2>
-      <p class="section-subtitle">Complete this form to finalize your rental. Payment is due prior to or at time of delivery/pickup via Cash or Venmo.</p>
-      <form class="rental-agreement-form" id="rental-agreement-form" action="mailto:oaktree@twoacornsrentals.com" method="POST" enctype="text/plain">
+      <h2>Rental Agreement</h2>
+      <form id="rental-agreement-form">
+        <input type="hidden" name="form_type" value="Rental Agreement">
 
-        <!-- Section 1: Rental Details -->
-        <div class="ra-section">
-          <h3 class="ra-section-title">1. Rental Details</h3>
-          <div class="ra-field-row">
-            <div class="form-group">
-              <label for="ra-name">Renter Name *</label>
-              <input type="text" id="ra-name" name="Renter Name" required />
-            </div>
-            <div class="form-group">
-              <label for="ra-phone">Phone Number *</label>
-              <input type="tel" id="ra-phone" name="Phone Number" required />
-            </div>
+        <div class="form-group">
+          <label for="Renter Name">Renter Full Name *</label>
+          <input type="text" id="Renter Name" name="Renter Name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Phone Number">Phone Number *</label>
+          <input type="tel" id="Phone Number" name="Phone Number" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Delivery Address">Delivery Address *</label>
+          <input type="text" id="Delivery Address" name="Delivery Address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Rental Date">Rental Date *</label>
+          <input type="date" id="Rental Date" name="Rental Date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Drop-Off Time">Drop-Off Time</label>
+          <input type="text" id="Drop-Off Time" name="Drop-Off Time" placeholder="e.g., 10:00 AM">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="Chairs Qty">Chairs Quantity</label>
+            <input type="number" id="Chairs Qty" name="Chairs Qty" value="0" min="0">
           </div>
           <div class="form-group">
-            <label for="ra-address">Delivery / Event Address *</label>
-            <input type="text" id="ra-address" name="Delivery Address" required />
-          </div>
-          <div class="ra-field-row">
-            <div class="form-group">
-              <label for="ra-date">Rental Date(s) *</label>
-              <input type="date" id="ra-date" name="Rental Date" required />
-            </div>
-            <div class="form-group">
-              <label for="ra-time">Drop-Off / Pickup Time *</label>
-              <input type="text" id="ra-time" name="Drop-Off Time" placeholder="e.g. 10:00 AM – 6:00 PM" required />
-            </div>
+            <label for="Tables Qty">Tables Quantity</label>
+            <input type="number" id="Tables Qty" name="Tables Qty" value="0" min="0">
           </div>
         </div>
 
-        <!-- Section 2: Items Rented & Fees -->
-        <div class="ra-section">
-          <h3 class="ra-section-title">2. Items Rented & Fees</h3>
-          <div class="ra-items-grid">
-            <div class="form-group">
-              <label for="ra-chairs">Chairs (qty)</label>
-              <input type="number" id="ra-chairs" name="Chairs Qty" min="0" value="0" />
-            </div>
-            <div class="form-group">
-              <label for="ra-tables">Tables (qty)</label>
-              <input type="number" id="ra-tables" name="Tables Qty" min="0" value="0" />
-            </div>
-            <div class="form-group">
-              <label for="ra-other">Other</label>
-              <input type="text" id="ra-other" name="Other Items" placeholder="e.g. bounce house, canopy, shaved ice machine" />
-            </div>
-            <div class="form-group">
-              <label for="ra-delivery">Delivery</label>
-              <input type="text" id="ra-delivery" name="Delivery Type" placeholder="e.g. standard delivery" />
-            </div>
-          </div>
-          <div class="form-group ra-total-row">
-            <label for="ra-total">Total Amount Due ($)</label>
-            <input type="number" id="ra-total" name="Total Amount Due" min="0" step="0.01" placeholder="0.00" />
-          </div>
-          <p class="ra-payment-note">Payment due prior to or at time of delivery/pickup via <strong>Cash</strong> or <strong>Venmo</strong>.</p>
+        <div class="form-group">
+          <label for="Other Items">Other Items</label>
+          <input type="text" id="Other Items" name="Other Items">
         </div>
 
-        <!-- Section 3: Terms & Conditions -->
-        <div class="ra-section">
-          <h3 class="ra-section-title">3. Terms & Conditions</h3>
-          <div class="ra-terms">
-            <div class="ra-term">
-              <strong>Care & Condition:</strong>
-              <p>Renter agrees to keep equipment clean and free of damage. Equipment must remain covered or indoors during rain or extreme weather.</p>
-            </div>
-            <div class="ra-term">
-              <strong>Cleaning Fee:</strong>
-              <p>Items returned with severe grease, paint, or excessive mud may incur a $15 cleaning fee deducted from the deposit.</p>
-            </div>
-            <div class="ra-term">
-              <strong>Damage & Replacement Fees:</strong>
-              <p>If equipment is lost, stolen, or destroyed beyond normal wear and tear, the deposit will be withheld, and the Renter agrees to cover replacement costs:</p>
-              <ul class="ra-replacement-list">
-                <li>White Folding Chair: $15 / each</li>
-                <li>6-Foot Table: $85 / each</li>
-                <li>Cornhole Board Set: $80 / set</li>
-              </ul>
-            </div>
-            <div class="ra-term">
-              <strong>Liability:</strong>
-              <p>Owner is not responsible for injuries, accidents, or property damage resulting from the setup, use, or transport of the rented equipment.</p>
-            </div>
-            <div class="ra-term">
-              <strong>Deposit Return:</strong>
-              <p>The $25 deposit will be fully refunded within 24 hours of equipment inspection at pickup/return.</p>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="Delivery Type">Delivery Type</label>
+          <input type="text" id="Delivery Type" name="Delivery Type" placeholder="Delivery or Pickup">
         </div>
 
-        <!-- Section 4: Acknowledgment & Signature -->
-        <div class="ra-section">
-          <h3 class="ra-section-title">4. Acknowledgment & Signature</h3>
-          <p class="ra-acknowledge-text">By signing below, Renter agrees to all terms outlined above.</p>
-          <div class="ra-field-row">
-            <div class="form-group">
-              <label for="ra-renter-sig">Renter Signature (type full name) *</label>
-              <input type="text" id="ra-renter-sig" name="Renter Signature" required />
-            </div>
-            <div class="form-group">
-              <label for="ra-renter-date">Date *</label>
-              <input type="date" id="ra-renter-date" name="Renter Signature Date" required />
-            </div>
-          </div>
-          <div class="ra-field-row">
-            <div class="form-group">
-              <label for="ra-owner-sig">Owner Signature (type full name)</label>
-              <input type="text" id="ra-owner-sig" name="Owner Signature" />
-            </div>
-            <div class="form-group">
-              <label for="ra-owner-date">Date</label>
-              <input type="date" id="ra-owner-date" name="Owner Signature Date" />
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="Total Amount Due">Total Amount Due ($)</label>
+          <input type="text" id="Total Amount Due" name="Total Amount Due">
         </div>
 
-        <button type="submit" class="btn btn-full btn-book">Submit Rental Agreement</button>
+        <div class="form-group">
+          <label for="Renter Signature">Renter Signature (Type Full Name) *</label>
+          <input type="text" id="Renter Signature" name="Renter Signature" required>
+        </div>
+
+        <div class="form-group">
+          <label for="Renter Signature Date">Signature Date *</label>
+          <input type="date" id="Renter Signature Date" name="Renter Signature Date" required>
+        </div>
+
+        <button type="submit" id="ra-submit-btn" class="btn btn-primary">Submit Rental Agreement</button>
+        <p id="ra-form-success" class="success-msg" hidden>✅ Signed Rental Agreement Submitted Successfully!</p>
       </form>
     </div>
   </section>
@@ -298,7 +194,7 @@
   <footer class="site-footer">
     <div class="container footer-content">
       <div class="footer-brand">
-        <img src="logo.jfif" alt="Two Acorns Rentals logo" class="footer-logo-img" />
+        <img src="logo.jfif" alt="Two Acorns Rentals logo" class="footer-logo-img">
         <span class="footer-brand-name">Two Acorns Rentals</span>
         <p>Party & event rentals for the local community.</p>
       </div>
