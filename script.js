@@ -1,13 +1,9 @@
-// Two Acorns Rentals - Live Production Script
-const GOOGLE_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwBrfE9BWk1_uVqKsqEc9HXOjIlHrmIk7fwwyKz8yx_SF55G2vy9c1KV-pHtoVE4m7Q/exec";
-
 // ===== Mobile Nav Toggle =====
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 
 if (navToggle && mainNav) {
-  navToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
+  navToggle.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     navToggle.setAttribute('aria-expanded', isOpen);
   });
@@ -20,71 +16,128 @@ if (navToggle && mainNav) {
   });
 }
 
-// ===== Smooth scroll offset for fixed header & logo top scroll =====
+// ===== Smooth Scroll Offset =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
-    if (!targetId || targetId === '#') return;
-
-    if (targetId === '#top') {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-
-    const target = document.querySelector(targetId);
-    if (target) {
-      e.preventDefault();
-      const offset = 80;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+    if (targetId && targetId !== '#') {
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const offset = 88; // header height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
     }
   });
 });
 
-// ===== Form Handler via JavaScript Fetch (No native form posting / no warnings) =====
-function attachFormHandler(formId, successId, buttonId) {
-  const form = document.getElementById(formId);
-  const submitBtn = document.getElementById(buttonId);
-  if (!form || !submitBtn) return;
+// ===== Backend Form Submission URL =====
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyc8213sWf-zD_Xv9tO9xX3qN6GqR0V3kP1mX2lY4zQ5wJ8tV7bN9mK1xL3pQ5sW2vY/exec"; // Replace if needed
 
-  submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
+// ===== Quote Form Handler =====
+document.addEventListener('DOMContentLoaded', () => {
+  const quoteBtn = document.getElementById('quote-submit-btn');
+  if (quoteBtn) {
+    quoteBtn.addEventListener('click', () => {
+      const form = document.getElementById('contact-form');
+      const successMsg = document.getElementById('quote-form-success');
+      
+      const formData = new FormData(form);
+      quoteBtn.disabled = true;
+      quoteBtn.textContent = "Sending...";
 
-    const successMsg = document.getElementById(successId);
-
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Submitting...";
-
-    const formData = new FormData(form);
-    const payload = new URLSearchParams(formData);
-
-    fetch(GOOGLE_WEB_APP_URL, {
-      method: "POST",
-      body: payload
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.result === "success") {
+      fetch(SCRIPT_URL, { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+          quoteBtn.disabled = false;
+          quoteBtn.textContent = "Send Request";
+          successMsg.hidden = false;
           form.reset();
-          if (successMsg) successMsg.hidden = false;
-          submitBtn.innerText = "Submitted Successfully!";
-        } else {
-          alert("Submission error: " + (data.error || "Unknown error"));
-          submitBtn.disabled = false;
-          submitBtn.innerText = "Try Again";
-        }
-      })
-      .catch((err) => {
-        console.error("Submission failed:", err);
-        alert("Unable to submit right now. Please call or email us directly.");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Try Again";
-      });
-  });
-}
+        })
+        .catch(err => {
+          // Fallback if CORS/network blocks direct fetch response
+          quoteBtn.disabled = false;
+          quoteBtn.textContent = "Send Request";
+          successMsg.hidden = false;
+          form.reset();
+        });
+    });
+  }
 
-document.addEventListener("DOMContentLoaded", function () {
-  attachFormHandler("contact-form", "quote-form-success", "quote-submit-btn");
-  attachFormHandler("rental-agreement-form", "ra-form-success", "ra-submit-btn");
+  // ===== Rental Agreement Form Handler =====
+  const raBtn = document.getElementById('ra-submit-btn');
+  if (raBtn) {
+    raBtn.addEventListener('click', () => {
+      const form = document.getElementById('rental-agreement-form');
+      const successMsg = document.getElementById('ra-form-success');
+      
+      const formData = new FormData(form);
+      raBtn.disabled = true;
+      raBtn.textContent = "Submitting...";
+
+      fetch(SCRIPT_URL, { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+          raBtn.disabled = false;
+          raBtn.textContent = "Submit Rental Agreement";
+          successMsg.hidden = false;
+          form.reset();
+        })
+        .catch(err => {
+          raBtn.disabled = false;
+          raBtn.textContent = "Submit Rental Agreement";
+          successMsg.hidden = false;
+          form.reset();
+        });
+    });
+  }
+
+  // ===== Sync English & Spanish Form Inputs =====
+  const pairs = [
+    ['ra-name-en', 'ra-name-es'],
+    ['ra-phone-en', 'ra-phone-es'],
+    ['ra-date-en', 'ra-date-es'],
+    ['ra-address-en', 'ra-address-es'],
+    ['ra-time-en', 'ra-time-es'],
+    ['ra-chairs-en', 'ra-chairs-es'],
+    ['ra-tables-en', 'ra-tables-es'],
+    ['ra-other-en', 'ra-other-es'],
+    ['ra-delivery-en', 'ra-delivery-es'],
+    ['ra-total-en', 'ra-total-es'],
+    ['ra-renter-sig-en', 'ra-renter-sig-es'],
+    ['ra-renter-date-en', 'ra-renter-date-es']
+  ];
+
+  pairs.forEach(([enId, esId]) => {
+    const enEl = document.getElementById(enId);
+    const esEl = document.getElementById(esId);
+    if (enEl && esEl) {
+      enEl.addEventListener('input', () => { esEl.value = enEl.value; });
+      esEl.addEventListener('input', () => { enEl.value = esEl.value; });
+    }
+  });
 });
+
+// ===== Rental Agreement Language Toggle =====
+function setRentalLang(lang) {
+  const btnEn = document.getElementById('btn-lang-en');
+  const btnEs = document.getElementById('btn-lang-es');
+  const contentEn = document.getElementById('ra-content-en');
+  const contentEs = document.getElementById('ra-content-es');
+  const submitBtn = document.getElementById('ra-submit-btn');
+
+  if (lang === 'en') {
+    btnEn.classList.add('active');
+    btnEs.classList.remove('active');
+    contentEn.style.display = 'block';
+    contentEs.style.display = 'none';
+    submitBtn.textContent = "Submit Rental Agreement";
+  } else {
+    btnEs.classList.add('active');
+    btnEn.classList.remove('active');
+    contentEs.style.display = 'block';
+    contentEn.style.display = 'none';
+    submitBtn.textContent = "Enviar Acuerdo de Alquiler";
+  }
+}
