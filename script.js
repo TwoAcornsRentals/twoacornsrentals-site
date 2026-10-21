@@ -33,10 +33,46 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===== Backend Form Submission URL =====
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyc8213sWf-zD_Xv9tO9xX3qN6GqR0V3kP1mX2lY4zQ5wJ8tV7bN9mK1xL3pQ5sW2vY/exec"; // Replace if needed
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyc8213sWf-zD_Xv9tO9xX3qN6GqR0V3kP1mX2lY4zQ5wJ8tV7bN9mK1xL3pQ5sW2vY/exec"; // Active backend web app URL
 
-// ===== Quote Form Handler =====
+// ===== Live Total Calculation & Form Handlers =====
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // 1. Live Total Calculation for Rental Agreement
+  const chairsInput = document.getElementById('ra-chairs-en') || document.getElementById('Chairs Qty');
+  const tablesInput = document.getElementById('ra-tables-en') || document.getElementById('Tables Qty');
+  const totalInput = document.getElementById('ra-total-en') || document.getElementById('Total Amount Due');
+
+  function calculateTotal() {
+    if (!totalInput) return;
+    const chairs = parseInt(chairsInput ? chairsInput.value : 0) || 0;
+    const tables = parseInt(tablesInput ? tablesInput.value : 0) || 0;
+    
+    // Pricing: $2 per chair, $10 per table
+    const total = (chairs * 2) + (tables * 10);
+    totalInput.value = total > 0 ? total.toFixed(2) : '';
+  }
+
+  if (chairsInput) chairsInput.addEventListener('input', calculateTotal);
+  if (tablesInput) tablesInput.addEventListener('input', calculateTotal);
+
+  // 2. Smart Number Fields: Auto-clear initial '0' on focus, restore '0' on blur if empty
+  const numberInputs = document.querySelectorAll('input[type="number"]');
+  numberInputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      if (this.value === '0') {
+        this.value = '';
+      }
+    });
+    input.addEventListener('blur', function() {
+      if (this.value === '') {
+        this.value = '0';
+        calculateTotal();
+      }
+    });
+  });
+
+  // ===== Quote Form Handler =====
   const quoteBtn = document.getElementById('quote-submit-btn');
   if (quoteBtn) {
     quoteBtn.addEventListener('click', () => {
@@ -56,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
           form.reset();
         })
         .catch(err => {
-          // Fallback if CORS/network blocks direct fetch response
           quoteBtn.disabled = false;
           quoteBtn.textContent = "Send Request";
           successMsg.hidden = false;
@@ -113,8 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const enEl = document.getElementById(enId);
     const esEl = document.getElementById(esId);
     if (enEl && esEl) {
-      enEl.addEventListener('input', () => { esEl.value = enEl.value; });
-      esEl.addEventListener('input', () => { enEl.value = esEl.value; });
+      enEl.addEventListener('input', () => { esEl.value = enEl.value; calculateTotal(); });
+      esEl.addEventListener('input', () => { enEl.value = enEl.value; calculateTotal(); });
     }
   });
 });
