@@ -1,4 +1,4 @@
-/* Two Acorns Event Rentals — replacement interactions */
+/* Two Acorns Event Rentals — interactions */
 (() => {
   "use strict";
 
@@ -38,7 +38,9 @@
     });
     const submit = document.getElementById("quote-submit-btn");
     submit.textContent = lang === "es" ? "Enviar solicitud de cotización" : "Send Quote Request";
-    document.documentElement.lang = lang;
+    // Only the form changes language, not the whole page, so search engines and
+    // screen readers still see an English page.
+    quoteForm.lang = lang;
   }
   if (quoteEn && quoteEs) {
     quoteEn.addEventListener("click", () => setQuoteLanguage("en"));
@@ -101,6 +103,14 @@
   const agreementForm = document.getElementById("rental-agreement-form");
   let agreementLanguage = "en";
 
+  // Only these fields are required. Everything else (drop-off time, quantities,
+  // other items, delivery type) is optional, so someone renting only tables or
+  // only a game can leave the chair/table counts empty.
+  const REQUIRED_IDS = {
+    en: ["ra-name-en", "ra-phone-en", "ra-date-en", "ra-address-en", "ra-sig-en", "ra-sig-date-en"],
+    es: ["ra-name-es", "ra-phone-es", "ra-date-es", "ra-address-es", "ra-sig-es", "ra-sig-date-es"]
+  };
+
   const priceInputs = {
     en: { chairs: document.getElementById("ra-chairs-en"), tables: document.getElementById("ra-tables-en"), total: document.getElementById("ra-total-en") },
     es: { chairs: document.getElementById("ra-chairs-es"), tables: document.getElementById("ra-tables-es"), total: document.getElementById("ra-total-es") }
@@ -108,6 +118,7 @@
   function calculateTotal(lang) {
     const fields = priceInputs[lang];
     if (!fields.chairs || !fields.tables || !fields.total) return;
+    // An empty box counts as 0
     const chairs = Math.max(0, parseInt(fields.chairs.value, 10) || 0);
     const tables = Math.max(0, parseInt(fields.tables.value, 10) || 0);
     fields.total.value = (chairs * 2 + tables * 10).toFixed(2);
@@ -147,8 +158,14 @@
     const languageValue = document.getElementById("agreement-language-value");
     enBlock.hidden = lang !== "en";
     esBlock.hidden = lang !== "es";
-    enBlock.querySelectorAll("input").forEach(input => { input.disabled = lang !== "en"; input.required = lang === "en" && input.dataset.optional !== "true"; });
-    esBlock.querySelectorAll("input").forEach(input => { input.disabled = lang !== "es"; input.required = lang === "es" && input.dataset.optional !== "true" && ["ra-name-es","ra-phone-es","ra-date-es","ra-address-es","ra-sig-es","ra-sig-date-es"].includes(input.id); });
+    enBlock.querySelectorAll("input").forEach(input => {
+      input.disabled = lang !== "en";
+      input.required = lang === "en" && REQUIRED_IDS.en.includes(input.id);
+    });
+    esBlock.querySelectorAll("input").forEach(input => {
+      input.disabled = lang !== "es";
+      input.required = lang === "es" && REQUIRED_IDS.es.includes(input.id);
+    });
     enButton.classList.toggle("active", lang === "en");
     esButton.classList.toggle("active", lang === "es");
     enButton.setAttribute("aria-pressed", String(lang === "en"));
@@ -167,10 +184,7 @@
   prepareFormPost(agreementForm, agreementButton, agreementStatus,
     () => agreementLanguage === "es" ? "Enviar acuerdo de alquiler" : "Submit Rental Agreement",
     () => {
-      const requiredIds = agreementLanguage === "es"
-        ? ["ra-name-es", "ra-phone-es", "ra-date-es", "ra-address-es", "ra-sig-es", "ra-sig-date-es"]
-        : ["ra-name-en", "ra-phone-en", "ra-date-en", "ra-address-en", "ra-sig-en", "ra-sig-date-en"];
-      for (const id of requiredIds) {
+      for (const id of REQUIRED_IDS[agreementLanguage]) {
         const field = document.getElementById(id);
         if (!field.value.trim()) {
           field.reportValidity();
@@ -185,7 +199,7 @@
   );
 
   // The native form submit call bypasses the submit event, which is intentional after validation.
-  // Restore the language-appropriate label after the brief "Submitting" state.
+  // Make sure the inactive language's fields never get submitted.
   agreementForm.addEventListener("submit", () => {
     const hidden = agreementLanguage === "en" ? document.getElementById("ra-content-es") : document.getElementById("ra-content-en");
     hidden.querySelectorAll("input").forEach(input => input.disabled = true);
