@@ -204,4 +204,26 @@
     const hidden = agreementLanguage === "en" ? document.getElementById("ra-content-es") : document.getElementById("ra-content-en");
     hidden.querySelectorAll("input").forEach(input => input.disabled = true);
   });
+  // Gallery photos: Cloudflare Pages is case-sensitive, so "Connect-4.JPG" is not "connect-4.jpg".
+  // If a photo fails to load, try the same name with other common extensions/cases.
+  // If none work, hide that tile (instead of a broken-image icon) and log the missing file
+  // in the browser console (F12 > Console) so it is easy to spot.
+  const PHOTO_EXTS = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG"];
+  document.querySelectorAll(".photo-item img").forEach(img => {
+    const original = img.getAttribute("src");
+    const base = original.replace(/\.[^.]+$/, "");
+    let i = 0;
+    const tryNext = () => {
+      while (i < PHOTO_EXTS.length && base + PHOTO_EXTS[i] === original) i++;
+      if (i >= PHOTO_EXTS.length) {
+        console.warn("Gallery photo not found on the site:", original);
+        const tile = img.closest(".photo-item");
+        if (tile) tile.hidden = true;
+        return;
+      }
+      img.src = base + PHOTO_EXTS[i++];
+    };
+    img.addEventListener("error", tryNext);
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute("src")) tryNext();
+  });
 })();
