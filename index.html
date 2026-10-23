@@ -3,14 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Two Acorns Event Rentals — chairs, tables, games, and event essentials in North Raleigh.">
-  <title>Two Acorns Event Rentals</title>
+  <title>Party &amp; Event Rentals in North Raleigh, NC | Two Acorns Event Rentals</title>
+  <meta name="description" content="Rent folding chairs, tables, cornhole, Connect 4, misting fans and more in North Raleigh, Wake Forest, Rolesville and Wake County, NC. Request a quote today.">
+  <link rel="canonical" href="https://twoacornsrentals.com/">
+  <meta name="theme-color" content="#2f4a2f">
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Two Acorns Event Rentals">
+  <meta property="og:title" content="Party &amp; Event Rentals in North Raleigh, NC | Two Acorns">
+  <meta property="og:description" content="Chairs, tables, games, and event essentials from a local family-owned business serving North Raleigh, Wake Forest, Rolesville, and Wake County.">
+  <meta property="og:url" content="https://twoacornsrentals.com/">
+  <meta property="og:image" content="https://twoacornsrentals.com/logo.png">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Local business structured data (helps Google understand who you are, where you serve, and what you charge) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Two Acorns Event Rentals",
+    "url": "https://twoacornsrentals.com/",
+    "logo": "https://twoacornsrentals.com/logo.png",
+    "image": "https://twoacornsrentals.com/logo.png",
+    "description": "Family-owned party and event rental business serving North Raleigh, Wake Forest, Rolesville, and surrounding Wake County, NC with chairs, tables, lawn games, and event essentials.",
+    "slogan": "Rooted in North Raleigh. Ready for your party.",
+    "telephone": "+1-910-707-4312",
+    "email": "oaktree@twoacornsrentals.com",
+    "priceRange": "$",
+    "paymentAccepted": "Cash, Venmo, Cash App",
+    "areaServed": [
+      { "@type": "City", "name": "Raleigh", "containedInPlace": { "@type": "State", "name": "North Carolina" } },
+      { "@type": "City", "name": "Wake Forest", "containedInPlace": { "@type": "State", "name": "North Carolina" } },
+      { "@type": "City", "name": "Rolesville", "containedInPlace": { "@type": "State", "name": "North Carolina" } },
+      { "@type": "AdministrativeArea", "name": "Wake County", "containedInPlace": { "@type": "State", "name": "North Carolina" } }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Rental Inventory",
+      "itemListElement": [
+        { "@type": "Offer", "price": "2.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "White Folding Chair (per chair)" } },
+        { "@type": "Offer", "price": "10.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "6-Foot Folding Table (per table)" } },
+        { "@type": "Offer", "price": "20.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "Cornhole Board Set" } },
+        { "@type": "Offer", "price": "15.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "Wooden Connect 4" } },
+        { "@type": "Offer", "price": "2.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "Kids' Chair (per chair)" } },
+        { "@type": "Offer", "price": "15.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "Misting Fan" } },
+        { "@type": "Offer", "price": "10.00", "priceCurrency": "USD", "itemOffered": { "@type": "Product", "name": "Soccer Goal & Cones Set" } }
+      ]
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Logo sizing: lets the logo scale to the site instead of a fixed box.
+       This sits after styles.css so it wins over older logo rules. -->
+  <style>
+    .logo { display: flex; align-items: center; gap: .65rem; }
+    .logo-img { height: 56px; width: auto; max-width: none; object-fit: contain; display: block; }
+    .footer-logo-img { height: 72px; width: auto; max-width: none; object-fit: contain; display: block; }
+    @media (max-width: 600px) {
+      .logo-img { height: 44px; }
+    }
+  </style>
 </head>
 <body id="top">
   <header class="site-header">
     <div class="container nav-bar">
-      <a href="#top" class="logo"><img src="logo.jfif" alt="Two Acorns logo" class="logo-img"><span>Two Acorns Event Rentals</span></a>
+      <a href="#top" class="logo"><img src="logo.png" alt="Two Acorns Event Rentals logo" class="logo-img"><span>Two Acorns Event Rentals</span></a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#rentals">Rentals</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Request a Quote</a><a href="#rental-agreement">Rental Agreement</a>
@@ -22,7 +83,7 @@
     <section class="hero">
       <div class="container hero-content">
         <p class="eyebrow">Rooted in North Raleigh. Ready for your party.</p>
-        <h1>Party &amp; Event Rentals</h1>
+        <h1>Party &amp; Event Rentals in North Raleigh, NC</h1>
         <p>Make your next gathering easier with quality chairs, tables, games, and event essentials from a local family-owned business.</p>
         <a href="#contact" class="btn">Request a Quote</a>
       </div>
@@ -41,14 +102,15 @@
           <article class="rental-card"><div class="rental-icon" aria-hidden="true">☀</div><h3>Misting Fan</h3><p class="price">$15.00 / each</p><p>Extra comfort for warm-weather outdoor events.</p></article>
           <article class="rental-card"><div class="rental-icon" aria-hidden="true">⚽</div><h3>Soccer Goal &amp; Cones</h3><p class="price">$10.00 / set</p><p>Easy outdoor fun for kids and family gatherings.</p></article>
         </div>
-        <p class="inventory-note">Need something not listed? Include it in your quote request and we’ll let you know what’s available.</p>
+        <p class="inventory-note">Serving North Raleigh, Wake Forest, Rolesville, and Wake County. Need something not listed? Include it in your quote request and we’ll let you know what’s available.</p>
       </div>
     </section>
 
     <section id="about" class="section section-alt">
       <div class="container about-grid">
         <h2 class="section-title">About Two Acorns</h2>
-        <p>We’re a local family-owned rental provider serving North Raleigh and nearby communities. Our goal is to help make birthdays, backyard parties, family celebrations, and neighborhood gatherings feel simple and stress-free.</p>
+        <p>We’re a local family-owned rental provider serving North Raleigh, Wake Forest, Rolesville, and surrounding Wake County communities. Our goal is to help make birthdays, backyard parties, family celebrations, and neighborhood gatherings feel simple and stress-free.</p>
+        <p class="service-area"><strong>Service area:</strong> North Raleigh, Wake Forest, Rolesville, and surrounding Wake County, NC.</p>
         <p class="tagline">Rooted in North Raleigh. Ready for your party.</p>
       </div>
     </section>
@@ -136,8 +198,8 @@
             </div>
             <div class="ra-section"><h3 class="ra-section-title">2. Items Rented &amp; Fees</h3>
               <div class="ra-items-grid">
-                <div class="form-group"><label for="ra-chairs-en">Chairs ($2 each)</label><input id="ra-chairs-en" name="Chairs Qty" type="number" min="0" value="0"></div>
-                <div class="form-group"><label for="ra-tables-en">Tables ($10 each)</label><input id="ra-tables-en" name="Tables Qty" type="number" min="0" value="0"></div>
+                <div class="form-group"><label for="ra-chairs-en">Chairs ($2 each)</label><input id="ra-chairs-en" name="Chairs Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+                <div class="form-group"><label for="ra-tables-en">Tables ($10 each)</label><input id="ra-tables-en" name="Tables Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
               </div>
               <div class="form-group"><label for="ra-other-en">Other Items</label><input id="ra-other-en" name="Other Items" type="text" placeholder="e.g., Cornhole set ($20), kids' chairs"></div>
               <div class="form-group"><label for="ra-delivery-en">Delivery Type</label><input id="ra-delivery-en" name="Delivery Type" type="text" placeholder="Delivery or pickup"></div>
@@ -169,8 +231,8 @@
             </div>
             <div class="ra-section"><h3 class="ra-section-title">2. Artículos alquilados y tarifas</h3>
               <div class="ra-items-grid">
-                <div class="form-group"><label for="ra-chairs-es">Sillas ($2 cada una)</label><input id="ra-chairs-es" name="Chairs Qty" type="number" min="0" value="0"></div>
-                <div class="form-group"><label for="ra-tables-es">Mesas ($10 cada una)</label><input id="ra-tables-es" name="Tables Qty" type="number" min="0" value="0"></div>
+                <div class="form-group"><label for="ra-chairs-es">Sillas ($2 cada una)</label><input id="ra-chairs-es" name="Chairs Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
+                <div class="form-group"><label for="ra-tables-es">Mesas ($10 cada una)</label><input id="ra-tables-es" name="Tables Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
               </div>
               <div class="form-group"><label for="ra-other-es">Otros artículos</label><input id="ra-other-es" name="Other Items" type="text" placeholder="Por ejemplo, cornhole ($20), sillas para niños"></div>
               <div class="form-group"><label for="ra-delivery-es">Tipo de entrega</label><input id="ra-delivery-es" name="Delivery Type" type="text" placeholder="Entrega o recogida"></div>
@@ -199,7 +261,7 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <div class="footer-brand"><a href="#top"><img src="logo.jfif" alt="Two Acorns logo" class="footer-logo-img"></a><strong>Two Acorns Event Rentals</strong><p>Rooted in North Raleigh. Ready for your party.</p></div>
+      <div class="footer-brand"><a href="#top"><img src="logo.png" alt="Two Acorns Event Rentals logo" class="footer-logo-img"></a><strong>Two Acorns Event Rentals</strong><p>Rooted in North Raleigh. Ready for your party.</p></div>
       <nav class="footer-links" aria-label="Footer navigation"><a href="#rentals">Rentals</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Request a Quote</a><a href="#rental-agreement">Rental Agreement</a></nav>
       <p class="footer-copy">© 2026 Two Acorns Event Rentals. All rights reserved.</p>
     </div>
