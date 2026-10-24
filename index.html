@@ -194,7 +194,11 @@
                 <div class="form-group"><label for="ra-date-en">Rental Date *</label><input id="ra-date-en" name="Rental Date" type="date" required></div>
               </div>
               <div class="form-group"><label for="ra-address-en">Delivery Address *</label><input id="ra-address-en" name="Delivery Address" type="text" required></div>
-              <div class="form-group"><label for="ra-time-en">Drop-Off Time</label><input id="ra-time-en" name="Drop-Off Time" type="text" placeholder="e.g., 10:00 AM"></div>
+              <div class="ra-field-row">
+  <div class="form-group"><label for="ra-time-en">Delivery / Pickup Time</label><input id="ra-time-en" name="Drop-Off Time" type="time"></div>
+  <div class="form-group"><label for="ra-pdate-en">Return Date</label><input id="ra-pdate-en" name="Return Date" type="date"></div>
+</div>
+<div class="form-group"><label for="ra-ptime-en">Return Time</label><input id="ra-ptime-en" name="Return Time" type="time"></div>
             </div>
             <div class="ra-section"><h3 class="ra-section-title">2. Items Rented &amp; Fees</h3>
               <div class="ra-items-grid">
@@ -202,7 +206,7 @@
                 <div class="form-group"><label for="ra-tables-en">Tables ($10 each)</label><input id="ra-tables-en" name="Tables Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
               </div>
               <div class="form-group"><label for="ra-other-en">Other Items</label><input id="ra-other-en" name="Other Items" type="text" placeholder="e.g., Cornhole set ($20), kids' chairs"></div>
-              <div class="form-group"><label for="ra-delivery-en">Delivery Type</label><input id="ra-delivery-en" name="Delivery Type" type="text" placeholder="Delivery or pickup"></div>
+              <div class="form-group"><label for="ra-delivery-en">Delivery Type *</label><select id="ra-delivery-en" name="Delivery Type"><option value="">Select…</option><option value="Delivery">Delivery (we deliver and collect)</option><option value="Pickup">Pickup (you pick up and return)</option></select></div>
               <div class="form-group ra-total-row"><label for="ra-total-en">Estimated Total ($)</label><input id="ra-total-en" name="Total Amount Due" type="text" readonly></div>
               <p class="ra-payment-note">Payment is due before or at delivery/pickup via <strong>cash</strong>, <strong>Venmo</strong>, or <strong>Cash App</strong>. The rental deposit is $25.</p>
             </div>
@@ -227,7 +231,11 @@
                 <div class="form-group"><label for="ra-date-es">Fecha del alquiler *</label><input id="ra-date-es" name="Rental Date" type="date"></div>
               </div>
               <div class="form-group"><label for="ra-address-es">Dirección de entrega *</label><input id="ra-address-es" name="Delivery Address" type="text"></div>
-              <div class="form-group"><label for="ra-time-es">Hora de entrega</label><input id="ra-time-es" name="Drop-Off Time" type="text" placeholder="Por ejemplo, 10:00 AM"></div>
+              <div class="ra-field-row">
+  <div class="form-group"><label for="ra-time-es">Hora de entrega / recogida</label><input id="ra-time-es" name="Drop-Off Time" type="time"></div>
+  <div class="form-group"><label for="ra-pdate-es">Fecha de devolución</label><input id="ra-pdate-es" name="Return Date" type="date"></div>
+</div>
+<div class="form-group"><label for="ra-ptime-es">Hora de devolución</label><input id="ra-ptime-es" name="Return Time" type="time"></div>
             </div>
             <div class="ra-section"><h3 class="ra-section-title">2. Artículos alquilados y tarifas</h3>
               <div class="ra-items-grid">
@@ -235,7 +243,7 @@
                 <div class="form-group"><label for="ra-tables-es">Mesas ($10 cada una)</label><input id="ra-tables-es" name="Tables Qty" type="number" min="0" inputmode="numeric" placeholder="0"></div>
               </div>
               <div class="form-group"><label for="ra-other-es">Otros artículos</label><input id="ra-other-es" name="Other Items" type="text" placeholder="Por ejemplo, cornhole ($20), sillas para niños"></div>
-              <div class="form-group"><label for="ra-delivery-es">Tipo de entrega</label><input id="ra-delivery-es" name="Delivery Type" type="text" placeholder="Entrega o recogida"></div>
+              <div class="form-group"><label for="ra-delivery-es">Tipo de entrega *</label><select id="ra-delivery-es" name="Delivery Type"><option value="">Seleccione…</option><option value="Delivery">Entrega (nosotros entregamos y recogemos)</option><option value="Pickup">Recogida (usted recoge y devuelve)</option></select></div>
               <div class="form-group ra-total-row"><label for="ra-total-es">Total estimado ($)</label><input id="ra-total-es" name="Total Amount Due" type="text" readonly></div>
               <p class="ra-payment-note">El pago vence antes o al momento de la entrega/recogida mediante <strong>efectivo</strong>, <strong>Venmo</strong> o <strong>Cash App</strong>. El depósito del alquiler es de $25.</p>
             </div>
