@@ -103,12 +103,12 @@
   const agreementForm = document.getElementById("rental-agreement-form");
   let agreementLanguage = "en";
 
-  // Only these fields are required. Everything else (drop-off time, quantities,
-  // other items, delivery type) is optional, so someone renting only tables or
-  // only a game can leave the chair/table counts empty.
+  // Only these fields are required. Everything else (delivery/pickup time, return date and time,
+  // quantities, other items) is optional, so someone renting only tables or only a game
+  // can leave the chair/table counts empty.
   const REQUIRED_IDS = {
-    en: ["ra-name-en", "ra-phone-en", "ra-date-en", "ra-address-en", "ra-sig-en", "ra-sig-date-en"],
-    es: ["ra-name-es", "ra-phone-es", "ra-date-es", "ra-address-es", "ra-sig-es", "ra-sig-date-es"]
+    en: ["ra-name-en", "ra-phone-en", "ra-date-en", "ra-address-en", "ra-delivery-en", "ra-sig-en", "ra-sig-date-en"],
+    es: ["ra-name-es", "ra-phone-es", "ra-date-es", "ra-address-es", "ra-delivery-es", "ra-sig-es", "ra-sig-date-es"]
   };
 
   const priceInputs = {
@@ -135,7 +135,8 @@
   const agreementPairs = [
     ["ra-name-en", "ra-name-es"], ["ra-phone-en", "ra-phone-es"],
     ["ra-date-en", "ra-date-es"], ["ra-address-en", "ra-address-es"],
-    ["ra-time-en", "ra-time-es"], ["ra-chairs-en", "ra-chairs-es"],
+    ["ra-time-en", "ra-time-es"], ["ra-pdate-en", "ra-pdate-es"],
+    ["ra-ptime-en", "ra-ptime-es"], ["ra-chairs-en", "ra-chairs-es"],
     ["ra-tables-en", "ra-tables-es"], ["ra-other-en", "ra-other-es"],
     ["ra-delivery-en", "ra-delivery-es"], ["ra-total-en", "ra-total-es"],
     ["ra-sig-en", "ra-sig-es"], ["ra-sig-date-en", "ra-sig-date-es"]
@@ -144,8 +145,12 @@
     const en = document.getElementById(enId);
     const es = document.getElementById(esId);
     if (!en || !es) return;
-    en.addEventListener("input", () => { es.value = en.value; calculateTotal("en"); calculateTotal("es"); });
-    es.addEventListener("input", () => { en.value = es.value; calculateTotal("en"); calculateTotal("es"); });
+    // "input" fires for text boxes, date/time pickers, and dropdowns in current browsers;
+    // "change" is added as a safety net for dropdowns.
+    ["input", "change"].forEach(evt => {
+      en.addEventListener(evt, () => { es.value = en.value; calculateTotal("en"); calculateTotal("es"); });
+      es.addEventListener(evt, () => { en.value = es.value; calculateTotal("en"); calculateTotal("es"); });
+    });
   });
 
   function setRentalLang(lang) {
@@ -158,11 +163,11 @@
     const languageValue = document.getElementById("agreement-language-value");
     enBlock.hidden = lang !== "en";
     esBlock.hidden = lang !== "es";
-    enBlock.querySelectorAll("input").forEach(input => {
+    enBlock.querySelectorAll("input, select").forEach(input => {
       input.disabled = lang !== "en";
       input.required = lang === "en" && REQUIRED_IDS.en.includes(input.id);
     });
-    esBlock.querySelectorAll("input").forEach(input => {
+    esBlock.querySelectorAll("input, select").forEach(input => {
       input.disabled = lang !== "es";
       input.required = lang === "es" && REQUIRED_IDS.es.includes(input.id);
     });
@@ -202,8 +207,9 @@
   // Make sure the inactive language's fields never get submitted.
   agreementForm.addEventListener("submit", () => {
     const hidden = agreementLanguage === "en" ? document.getElementById("ra-content-es") : document.getElementById("ra-content-en");
-    hidden.querySelectorAll("input").forEach(input => input.disabled = true);
+    hidden.querySelectorAll("input, select").forEach(input => input.disabled = true);
   });
+
   // Gallery photos: Cloudflare Pages is case-sensitive, so "Connect-4.JPG" is not "connect-4.jpg".
   // If a photo fails to load, try the same name with other common extensions/cases.
   // If none work, hide that tile (instead of a broken-image icon) and log the missing file
