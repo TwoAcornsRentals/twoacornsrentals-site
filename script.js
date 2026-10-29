@@ -107,8 +107,8 @@
   // quantities, other items) is optional, so someone renting only tables or only a game
   // can leave the chair/table counts empty.
   const REQUIRED_IDS = {
-    en: ["ra-name-en", "ra-phone-en", "ra-date-en", "ra-address-en", "ra-delivery-en", "ra-sig-en", "ra-sig-date-en"],
-    es: ["ra-name-es", "ra-phone-es", "ra-date-es", "ra-address-es", "ra-delivery-es", "ra-sig-es", "ra-sig-date-es"]
+    en: ["ra-name-en", "ra-phone-en", "ra-email-en", "ra-date-en", "ra-address-en", "ra-delivery-en", "ra-sig-en", "ra-sig-date-en"],
+    es: ["ra-name-es", "ra-phone-es", "ra-email-es", "ra-date-es", "ra-address-es", "ra-delivery-es", "ra-sig-es", "ra-sig-date-es"]
   };
 
   const priceInputs = {
@@ -133,7 +133,7 @@
   // Keep corresponding fields synchronized, but disable the inactive language's controls
   // so FormData only submits one value for each backend field name.
   const agreementPairs = [
-    ["ra-name-en", "ra-name-es"], ["ra-phone-en", "ra-phone-es"],
+    ["ra-name-en", "ra-name-es"], ["ra-phone-en", "ra-phone-es"],["ra-email-en", "ra-email-es"],
     ["ra-date-en", "ra-date-es"], ["ra-address-en", "ra-address-es"],
     ["ra-time-en", "ra-time-es"], ["ra-pdate-en", "ra-pdate-es"],
     ["ra-ptime-en", "ra-ptime-es"], ["ra-chairs-en", "ra-chairs-es"],
